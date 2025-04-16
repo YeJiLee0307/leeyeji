@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leeyeji</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #eae6df;
+      color: #222;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .intro {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      font-weight: bold;
+      background-color: #eae6df;
+      color: #222;
+      z-index: 2;
+    }
+
+    .intro-image {
+      background: url('leeyeji.jpeg') no-repeat center center/cover;
+      height: 70vh;
+      width: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: contrast(1.2) grayscale(0.2);
+      z-index: 2;
+      position: relative;
+    }
+
+    .bitmap-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(#000 1px, transparent 1px);
+      background-size: 4px 4px;
+      opacity: 0.06;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .content {
+      padding: 80px 20px 100px;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="bitmap-bg"></div>
+  <div class="intro">Leeyeji</div>
+  <div class="intro-image"></div>
+  <div class="content" id="content">
+    <p>Hello, I'm Yeji Lee — a designer who believes that every visual element carries the voice of its creator. To me, visual works are more than just images; they are language, structure, and expression. I create with the hope that my work can persuade, comfort, and speak for others, becoming a medium that bridges emotion and communication.</p>
+    <p>I want to major in Art & Technology at Sogang University — a program that allows me to truly be myself. I see this field not just as a discipline, but as a space where I can merge creativity with logic, emotion with technology. It’s where I’ve come to believe that I don’t have to choose between artistic intuition and technical skill — I can grow both.</p>
+    <p>Though I’m still learning tools like Arduino, C language, Blender, and Figma, I approach them with curiosity and persistence. The time I spend in this department is gradually assembling into a mosaic — a story of becoming — that I believe will ultimately shape me into a thoughtful and skilled UX/UI designer.</p>
+    <p>Through each project, I strive to form what I call “the language of Yeji Lee” — a unique way of seeing, building, and connecting. I look forward to new experiences, new collaborators, and the new ideas that will shape the next chapter of my creative journey.</p>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    const content = document.getElementById('content');
+    observer.observe(content);
+  </script>
+</body>
+</html>
+
+
